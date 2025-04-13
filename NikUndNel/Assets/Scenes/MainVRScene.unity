@@ -232,6 +232,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nel
       objectReference: {fileID: 0}
+    - target: {fileID: 6754660570617552272, guid: dc27c9e5c6b4dcb4895fbd9e4c955ee8,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754660570617552272, guid: dc27c9e5c6b4dcb4895fbd9e4c955ee8,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6754660570617552272, guid: dc27c9e5c6b4dcb4895fbd9e4c955ee8,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -348,7 +363,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &312297062
 Transform:
   m_ObjectHideFlags: 0
@@ -1023,7 +1038,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &312536281
 Transform:
   m_ObjectHideFlags: 0
@@ -3030,8 +3045,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 1675139956}
-  offsetCharCam: {x: 0, y: 0, z: 0}
+  offsetCharCam: {x: 2, y: 0, z: 0}
   smoothTime: 0.3
+  currentAngle: 0
+  rotationSpeed: 100
+  radius: 2
 --- !u!1 &899012948
 GameObject:
   m_ObjectHideFlags: 0
@@ -3727,7 +3745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1371266052
 Transform:
   m_ObjectHideFlags: 0
@@ -4675,7 +4693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1456783993
 Transform:
   m_ObjectHideFlags: 0
@@ -6286,13 +6304,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
+  m_Height: 1.4
   m_Radius: 0.2
   m_SlopeLimit: 45
   m_StepOffset: 0.003
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.7, z: 0}
 --- !u!114 &1675139966
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class ThirdPersonController : MonoBehaviour
 
     public float moveSpeed = 3.0f;
     public float turnSpeed = 10.0f;
-    public Transform cameraTransform; // Referenz zur Kamera im XR Origin
+    public Transform cameraTransform; 
 
     public CharacterController characterController;
 
@@ -18,20 +18,22 @@ public class ThirdPersonController : MonoBehaviour
     void Update()
     {
 
-        Vector2 leftInput = GetControllerInputLeft();
-        Vector2 rightInput = GetControllerInputRight();
 
+
+
+        // move character
+        Vector2 leftInput = GetControllerInputLeft();
         Vector3 moveDirection = cameraTransform.forward * leftInput.y + cameraTransform.right * leftInput.x;
-        moveDirection.y = 0f; 
+        moveDirection.y = 0f;
+        if (moveDirection.magnitude > 0.1f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(-moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, turnSpeed * Time.deltaTime);
+        }
         characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
 
 
-        float rotationInput = rightInput.x;
-        if (Mathf.Abs(rotationInput) > 0.1f)
-        {
-            float rotationAmount = rotationInput * turnSpeed * Time.deltaTime;
-            transform.Rotate(Vector3.up, rotationAmount); 
-        }
+
     }
 
     Vector2 GetControllerInputLeft()
@@ -44,13 +46,5 @@ public class ThirdPersonController : MonoBehaviour
         return Vector2.zero; 
     }
 
-    Vector2 GetControllerInputRight()
-    {
-        var leftHand = InputDevices.GetDeviceAtXRNode(XRNode.RightHand);
-        if (leftHand.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 input))
-        {
-            return input;
-        }
-        return Vector2.zero;
-    }
+
 }
